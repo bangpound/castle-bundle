@@ -1,0 +1,20 @@
+{
+    "name": "bangpound/castle-bundle",
+    "description": "Castle application bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Benjamin Doherty",
+            "email": "bjd@bangpound.org"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Bangpound\\Bundle\\CastleBundle\\": ""
+        }
+    },
+    "require": {
+
+    },
+    "target-dir": "Bangpound/Bundle/CastleBundle"
+}

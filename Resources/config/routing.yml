@@ -1,0 +1,3 @@
+bangpound_castle_homepage:
+    path:  /hello/{name}
+    defaults: { _controller: BangpoundCastleBundle:Default:index }
