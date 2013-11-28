@@ -442,3 +442,5 @@ Date.prototype.add = function(interval, number) {
 	}
 	return this;
 };
+
+exports.Date = Date;
