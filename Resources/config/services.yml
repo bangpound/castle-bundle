@@ -6,6 +6,13 @@ parameters:
         Bangpound.Bundle.CastleBundle.CouchDocument.AtomEntry: Castle
         Bangpound.Bundle.PubsubBundle.CouchDocument.AtomEntry: "kal3a: RSS / Atom"
 
+    bangpound_castle.types.lower:
+        bangpound.bundle.twitterstreamingbundle.couchdocument.atomentry: "kal3a: Twitter"
+        rshief.migrationbundle.couchdocument.collectoratomentry: Twitterminer
+        rshief.migrationbundle.couchdocument.atomentry: VBulletin
+        bangpound.bundle.castlebundle.couchdocument.atomentry: Castle
+        bangpound.bundle.pubsubbundle.couchdocument.atomentry: "kal3a: RSS / Atom"
+
 services:
 #    bangpound_castle.example:
 #        class: %bangpound_castle.example.class%

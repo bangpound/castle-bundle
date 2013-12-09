@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bjd
- * Date: 10/30/13
- * Time: 4:10 AM
- */
 
 namespace Bangpound\Bundle\CastleBundle\MetadataResolver;
 
