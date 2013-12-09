@@ -1,5 +1,10 @@
 parameters:
-#    bangpound_castle.example.class: Bangpound\Bundle\CastleBundle\Example
+    bangpound_castle.types:
+        Bangpound.Bundle.TwitterStreamingBundle.CouchDocument.AtomEntry: "kal3a: Twitter"
+        Rshief.MigrationBundle.CouchDocument.CollectorAtomEntry: Twitterminer
+        Rshief.MigrationBundle.CouchDocument.AtomEntry: VBulletin
+        Bangpound.Bundle.CastleBundle.CouchDocument.AtomEntry: Castle
+        Bangpound.Bundle.PubsubBundle.CouchDocument.AtomEntry: "kal3a: RSS / Atom"
 
 services:
 #    bangpound_castle.example:
