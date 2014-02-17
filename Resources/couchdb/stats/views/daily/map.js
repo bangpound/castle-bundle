@@ -1,7 +1,8 @@
 function (doc)
 {
-
-    var date =  require('views/lib/date').Date.parseString(doc.published, 'yyyy-MM-dd HH:mm:ss.000000');
+    var utc = doc.published.split(/\D/);
+    utc[1] = utc[1] - 1;
+    var date = new Date(Date.UTC.apply(null, utc));
     if (date) {
         emit([ date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds() ]);
     }
