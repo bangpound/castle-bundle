@@ -6,7 +6,8 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-class AddCouchDBTypesCompilerPass implements CompilerPassInterface {
+class AddCouchDBTypesCompilerPass implements CompilerPassInterface
+{
     public function process(ContainerBuilder $container)
     {
         $resolver = new Definition('Bangpound\Bundle\CastleBundle\MetadataResolver\DoctrineResolver');

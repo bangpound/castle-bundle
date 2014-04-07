@@ -12,13 +12,13 @@ use Doctrine\ODM\CouchDB\DocumentManager;
 use Doctrine\ODM\CouchDB\DocumentRepository as BaseDocumentRepository;
 use Doctrine\ODM\CouchDB\Mapping\ClassMetadata;
 
-class DocumentRepository extends BaseDocumentRepository {
-
+class DocumentRepository extends BaseDocumentRepository
+{
     /**
      * Initializes a new <tt>DocumentRepository</tt>.
      *
-     * @param DocumentManager $dm The DocumentManager to use.
-     * @param ClassMetadata $class The class descriptor.
+     * @param DocumentManager $dm    The DocumentManager to use.
+     * @param ClassMetadata   $class The class descriptor.
      */
 //    public function __construct($dm, ClassMetadata $class)
 //    {

@@ -2,11 +2,7 @@
 
 namespace Bangpound\Bundle\CastleBundle\MetadataResolver;
 
-
 use Doctrine\ODM\CouchDB\Mapping\ClassMetadata;
-use Doctrine\ODM\CouchDB\DocumentManager;
-use Doctrine\ODM\CouchDB\PersistentIdsCollection;
-use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ODM\CouchDB\Mapping\MetadataResolver\DoctrineResolver as BaseDoctrineResolver;
 
@@ -18,7 +14,8 @@ class DoctrineResolver extends BaseDoctrineResolver
 {
     private $typeMap;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->typeMap = [
             'twitter' => 'Rshief\TwitterMinerBundle\CouchDocument\AtomEntry',
             'pubsub' => 'Rshief\PubsubBundle\CouchDocument\AtomEntry',
@@ -27,7 +24,7 @@ class DoctrineResolver extends BaseDoctrineResolver
     }
 
     /**
-     * @param ClassMetadata $class
+     * @param  ClassMetadata $class
      * @return array
      */
     public function createDefaultDocumentStruct(ClassMetadata $class)
@@ -37,19 +34,19 @@ class DoctrineResolver extends BaseDoctrineResolver
         if ($key) {
             $struct['type'] = $key;
         }
+
         return $struct;
     }
 
     /**
-     * @param array $documentData
+     * @param  array $documentData
      * @return mixed
      */
     public function getDocumentType(array $documentData)
     {
         if (in_array($documentData['type'], $this->typeMap)) {
             return $this->typeMap[$documentData['type']];
-        }
-        else {
+        } else {
             return parent::getDocumentType($documentData);
         }
     }

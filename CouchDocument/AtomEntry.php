@@ -73,8 +73,10 @@ abstract class AtomEntry extends EntryType
         return $this;
     }
 
-    public function setOriginalData($data, $type) {
+    public function setOriginalData($data, $type)
+    {
         $attachment = Attachment::createFromBinaryData($data, $type);
+
         return $this->setAttachment('original', $attachment);
     }
 }
