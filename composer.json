@@ -9,12 +9,11 @@
         }
     ],
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Bangpound\\Bundle\\CastleBundle\\": ""
         }
     },
     "require": {
 
-    },
-    "target-dir": "Bangpound/Bundle/CastleBundle"
+    }
 }
