@@ -14,9 +14,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class BangpoundCastleBundle extends Bundle
 {
-    public function build(ContainerBuilder $container)
-    {
-//        $container->addCompilerPass(new AddCouchDBTypesCompilerPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION);
-//        $container->addCompilerPass(new NotificationAdminCompilerPass());
-    }
 }
