@@ -13,7 +13,12 @@ parameters:
         bangpound.bundle.castlebundle.couchdocument.atomentry: Castle
         bangpound.bundle.pubsubbundle.couchdocument.atomentry: "kal3a: RSS / Atom"
 
+    bangpound_castle.command.export.class: Bangpound\Bundle\CastleBundle\Command\ExportCommand
+
 services:
-#    bangpound_castle.example:
-#        class: %bangpound_castle.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    bangpound_castle.command.export:
+        class: %bangpound_castle.command.export.class%
+        calls:
+            - [ setRegistry, [ @doctrine_couchdb ] ]
+        tags:
+            - { name: console.command, }
