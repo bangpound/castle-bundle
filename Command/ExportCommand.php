@@ -66,14 +66,17 @@ class ExportCommand extends ContainerAwareCommand
             $next_start_key = null;
             if (count($result) > 0) {
                 if (count($result) == $limit + 1) {
-//                    $next_start_key = $result[$limit]['id'];
-//                    $query->setStartKeyDocId($next_start_key);
-//                    $output->writeln('resume with '. $next_start_key);
+                    $next_start_key = $result[$limit]['key'];
+                    $query->setStartKey($result[$limit]['key']);
+                    $query->setStartKeyDocId($result[$limit]['id']);
+                    $output->writeln('resume with '. implode('-', $result[$limit]['key']) .' '. $result[$limit]['id']);
                 }
 
                 $rows = array();
-                foreach ($result as $row) {
-                    $rows[] = json_encode($row['doc']);
+                foreach ($result as $i => $row) {
+                    if ($i < $limit) {
+                        $rows[] = json_encode($row['doc']);
+                    }
                 }
                 $data = implode(',', $rows);
                 if ($next_start_key) {
