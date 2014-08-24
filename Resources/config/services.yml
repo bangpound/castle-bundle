@@ -14,10 +14,18 @@ parameters:
         bangpound.bundle.pubsubbundle.couchdocument.atomentry: "kal3a: RSS / Atom"
 
     bangpound_castle.command.export.class: Bangpound\Bundle\CastleBundle\Command\ExportCommand
+    bangpound_castle.command.prune.class: Bangpound\Bundle\CastleBundle\Command\PruneCommand
 
 services:
     bangpound_castle.command.export:
         class: %bangpound_castle.command.export.class%
+        calls:
+            - [ setRegistry, [ @doctrine_couchdb ] ]
+        tags:
+            - { name: console.command, }
+
+    bangpound_castle.command.prune:
+        class: %bangpound_castle.command.prune.class%
         calls:
             - [ setRegistry, [ @doctrine_couchdb ] ]
         tags:
