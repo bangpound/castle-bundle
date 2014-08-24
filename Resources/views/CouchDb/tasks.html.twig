@@ -1,18 +1,56 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <table>
-        {% for row in data %}
+    <div class="container">
+        <table class="table table-condensed">
+            <thead>
             <tr>
-                <td>{{ row.pid }}</td>
-                <td>{{ row.changes_done }}</td>
-                <td>{{ row.database }}</td>
-                <td>{{ row.progress }}</td>
-                <td>{{ row.started_on }}</td>
-                <td>{{ row.total_changes }}</td>
-                <td>{{ row.type }}</td>
-                <td>{{ row.updated_on }}</td>
+                <th>pid</th>
+                <th>type</th>
+                <th>progress</th>
+                <th>started_on</th>
+                <th>updated_on</th>
+                <th>details</th>
             </tr>
-        {% endfor %}
-    </table>
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.pid }}</td>
+                    <td>{{ row.type }}</td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ row.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.progress }}%">
+                                {{ row.progress }}%<span class="sr-only"> Complete</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ row.started_on | date }}</td>
+                    <td>{{ row.updated_on | date }}</td>
+                    <td>
+                        <dl>
+                            {% for key, value in row %}
+                                {% if key not in ["pid","type","progress","started_on","updated_on"] %}
+                                    <dt>{{ key }}</dt>
+                                    <dd>{{ value }}</dd>
+                                {% endif %}
+                            {% endfor %}
+                        </dl>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter='cssrewrite' "vendor/font-awesome/css/font-awesome.css" "bundles/bangpoundcastlesearch/css/style.scss" %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
 {% endblock %}
