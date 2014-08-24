@@ -45,7 +45,7 @@ class ExportCommand extends ContainerAwareCommand
 
         // Executing the query without grouping allows the view to be refreshed.
         /** @var  $query */
-        $query = $default_client->createViewQuery('stats', 'tag');
+        $query = $default_client->createViewQuery('maint', 'tag');
         $output->writeln('Updating view.');
         $query->execute();
 
