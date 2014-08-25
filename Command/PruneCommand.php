@@ -41,7 +41,7 @@ class PruneCommand extends ContainerAwareCommand
         $default_client = $this->registry->getConnection();
 
         $date = \DateTime::createFromFormat('Y-m-d', $input->getArgument('date'));
-        $limit = 10;
+        $limit = 1000;
 
         // Executing the query without grouping allows the view to be refreshed.
         /** @var  $query */
