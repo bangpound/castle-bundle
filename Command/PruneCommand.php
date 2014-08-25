@@ -81,8 +81,6 @@ class PruneCommand extends ContainerAwareCommand
                 $result = $bulk->execute();
             }
         } while ($next_start_key);
-
-        $default_client->compactDatabase();
     }
 
     public function setRegistry(ManagerRegistry $registry)
