@@ -26,6 +26,7 @@ class ExportCommand extends ContainerAwareCommand
             ->addOption('start', 'start', InputArgument::OPTIONAL, 'Start date')
             ->addOption('end', 'end', InputArgument::OPTIONAL, 'End date')
             ->addOption('output', 'o', InputArgument::OPTIONAL, 'Output file')
+            ->addOption('stale', 'stale', InputArgument::OPTIONAL, 'Stale')
         ;
     }
 
@@ -45,9 +46,11 @@ class ExportCommand extends ContainerAwareCommand
 
         // Executing the query without grouping allows the view to be refreshed.
         /** @var  $query */
-        $query = $default_client->createViewQuery('maint', 'tag');
-        $output->writeln('Updating view.');
-        $query->execute();
+        if ($input->getOption('stale')) {
+            $query = $default_client->createViewQuery('maint', 'tag');
+            $output->writeln('Updating view.');
+            $query->execute();
+        }
 
         // All other executions will allow stale results.
         $query->setGroup(false);
