@@ -25,10 +25,13 @@ class PruneCommand extends ContainerAwareCommand
 
     protected function configure()
     {
+        $date = new \DateTime();
+        $date->sub(new \DateInterval('P1M'));
+
         $this
             ->setName('castle:prune')
             ->setDescription('Prune atom entities by date')
-            ->addArgument('date', InputArgument::REQUIRED, 'Prune date')
+            ->addArgument('date', InputArgument::OPTIONAL, 'Prune date', $date->format('Y-m-d'))
         ;
     }
 
