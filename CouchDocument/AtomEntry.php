@@ -17,12 +17,16 @@ abstract class AtomEntry extends EntryType
     /** @var array<Attachment> $attachments */
     protected $attachments;
 
+    /**  @var array */
+    protected $extra;
+
     /**
      *
      */
     public function __construct()
     {
         $this->attachments = array();
+        $this->extra = array();
     }
 
     /**
@@ -78,5 +82,17 @@ abstract class AtomEntry extends EntryType
         $attachment = Attachment::createFromBinaryData($data, $type);
 
         return $this->setAttachment('original', $attachment);
+    }
+
+    public function getExtra($key)
+    {
+        return $this->extra[$key];
+    }
+
+    public function setExtra($key, $value)
+    {
+        $this->extra[$key] = $value;
+
+        return $this;
     }
 }
