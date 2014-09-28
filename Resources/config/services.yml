@@ -23,14 +23,14 @@ services:
         calls:
             - [ setRegistry, [ @doctrine_couchdb ] ]
         tags:
-            - { name: console.command, }
+            - { name: console.command }
 
     bangpound_castle.command.prune:
         class: %bangpound_castle.command.prune.class%
         calls:
             - [ setRegistry, [ @doctrine_couchdb ] ]
         tags:
-            - { name: console.command, }
+            - { name: console.command }
 
     bangpound_castle.command.update_view:
         class: %bangpound_castle.command.update_view.class%
