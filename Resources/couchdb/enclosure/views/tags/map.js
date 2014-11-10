@@ -7,7 +7,7 @@ function (doc)
         doc.categories.forEach(function (category) {
             doc.links.forEach(function (link) {
                 if (link.rel === 'enclosure') {
-                    emit([category.term.toLowerCase(), date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds(), link.href ], 1);
+                    emit([category.term.toLowerCase(), link.href ], 1);
                 }
             });
         });
