@@ -15,6 +15,7 @@ parameters:
 
     bangpound_castle.command.export.class: Bangpound\Bundle\CastleBundle\Command\ExportCommand
     bangpound_castle.command.prune.class: Bangpound\Bundle\CastleBundle\Command\PruneCommand
+    bangpound_castle.command.update_view.class: Bangpound\Bundle\CastleBundle\Command\UpdateViewCommand
 
 services:
     bangpound_castle.command.export:
@@ -22,11 +23,42 @@ services:
         calls:
             - [ setRegistry, [ @doctrine_couchdb ] ]
         tags:
-            - { name: console.command, }
+            - { name: console.command }
 
     bangpound_castle.command.prune:
         class: %bangpound_castle.command.prune.class%
         calls:
             - [ setRegistry, [ @doctrine_couchdb ] ]
         tags:
-            - { name: console.command, }
+            - { name: console.command }
+
+    bangpound_castle.command.update_view:
+        class: %bangpound_castle.command.update_view.class%
+        calls:
+            - [ setRegistry, [ @doctrine_couchdb ] ]
+        tags:
+            - { name: console.command }
+
+    bangpound_castle.process.elasticsearch:
+        class: Bangpound\Bundle\InvokerBundle\Process\ProcessBuilder
+        arguments: [ ["/usr/local/bin/elasticsearch", "--config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"] ]
+        calls:
+            - [ setTimeout, [ ~ ]]
+        tags:
+            - { name: bangpound_invoker.server }
+
+    bangpound_castle.process.couchdb:
+        class: Bangpound\Bundle\InvokerBundle\Process\ProcessBuilder
+        arguments: [ ["couchdb" ] ]
+        calls:
+            - [ setTimeout, [ ~ ]]
+        tags:
+            - { name: bangpound_invoker.server }
+
+    bangpound_castle.process.rabbitmq:
+        class: Bangpound\Bundle\InvokerBundle\Process\ProcessBuilder
+        arguments: [ ["rabbitmq-server"] ]
+        calls:
+            - [ setTimeout, [ ~ ]]
+        tags:
+            - { name: bangpound_invoker.server }
