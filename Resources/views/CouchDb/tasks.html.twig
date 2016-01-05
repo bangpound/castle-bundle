@@ -46,9 +46,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {% stylesheets filter='cssrewrite' "bundles/bangpoundcastlesearch/css/style.scss" %}
-    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
-    {% endstylesheets %}
+    <link href="{{ asset('bundles/bangpoundcastlesearch/css/style.css') }}" type="text/css" rel="stylesheet" />
     <style>
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
             display: none !important;
