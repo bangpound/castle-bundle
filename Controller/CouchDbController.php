@@ -26,6 +26,8 @@ class CouchDbController extends Controller
             throw new CouchDBException("Could not retrieve active tasks from CouchDB.");
         }
 
-        return $response->body;
+        return array(
+          'data' => $response->body,
+        );
     }
 }
